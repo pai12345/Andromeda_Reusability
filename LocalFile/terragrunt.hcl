@@ -1,9 +1,10 @@
-terraform {
-  # source = "git::git@github.com:pai12345/Andromeda_Terraform.git//LocalFile?ref=v0.0.1"      
-  source = "git::ssh://git@github.com/pai12345/Andromeda_Terraform.git//LocalFile?ref=v0.0.1"
-}
-
-inputs = {
-  content = "Hello World"
-  directorypermission  = "0777"
+generate "provider" {
+  path = "provider.tf"
+  if_exists = "overwrite_terragrunt"
+  contents = <<EOF
+  provider "local" {
+    source = "hashicorp/local"
+    version = "2.1.0"
+  }
+  EOF
 }
