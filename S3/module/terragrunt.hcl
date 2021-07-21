@@ -1,5 +1,5 @@
 terraform {     
-  source = "git::ssh://git@github.com/pai12345/Andromeda_Terraform.git//S3?ref=v0.0.4"
+  source = "git::ssh://git@github.com/pai12345/Andromeda_Terraform.git//S3?ref=v0.0.5"
   extra_arguments "conditional_vars" {
     commands = [
       "apply",
