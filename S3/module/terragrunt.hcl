@@ -1,5 +1,15 @@
 terraform {     
-  source = "git::ssh://git@github.com/pai12345/Andromeda_Terraform.git//S3?ref=v0.0.3"
+  source = "git::ssh://git@github.com/pai12345/Andromeda_Terraform.git//S3?ref=v0.0.4"
+  extra_arguments "conditional_vars" {
+    commands = [
+      "apply",
+      "plan",
+      "refresh"
+    ]
+    required_var_files = [
+      "${get_parent_terragrunt_dir()}/variables.tfvars"
+    ]
+  }
 }
 
 include {
