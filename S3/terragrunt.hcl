@@ -1,3 +1,7 @@
+locals {
+  global_vars = yamldecode(file("./global/global.yml"))
+}
+
 generate "provider" {
   path = "provider.tf"
   if_exists = "overwrite_terragrunt"
@@ -5,8 +9,8 @@ generate "provider" {
   terraform {
     required_providers {
       aws = {
-      source = "hashicorp/aws"
-      version = "3.50.0"
+      source = "${local.global_vars.aws.source}"
+      version = "${local.global_vars.aws.version}"
       }
     }
   }
